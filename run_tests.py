@@ -1,11 +1,6 @@
 import unittest
-'''
-the file in /tests/homework/c_decisions/tests_decisions.py
-has the test functions
-'''
-import unittest
-from tests.homework.c_decisions import tests_decisions
+from tests.homework.d_repetition import tests_repetition
 
-suite = unittest.TestLoader().loadTestsFromModule(tests_decisions)
+suite = unittest.TestLoader().loadTestsFromModule(tests_repetition)
 runner = unittest.TextTestRunner()
 runner.run(suite)

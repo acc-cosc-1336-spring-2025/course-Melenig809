@@ -1,37 +1,24 @@
-def get_lowest_list_value(numbers_list):
-    lowest = numbers_list[0]  
-    
-    for num in numbers_list:  
-        if num < lowest:  
-            lowest = num  
-    
-    return lowest  
+def get_p_distance(list1, list2):
+    differences = 0
 
-def get_highest_list_value(numbers_list):
-    highest = numbers_list[0]  
-    
-    for num in numbers_list:  
-        if num > highest:  
-            highest = num  
-    
-    return highest  
+    for i in range(len(list1)):
+        if list1[i] != list2[i]:
+            differences += 1
 
-import unittest
+    p_distance = differences / len(list1)
+    return p_distance
 
-from lists import get_lowest_list_value, get_highest_list_value
 
-class TestListFunctions(unittest.TestCase):
-    
-    def test_get_lowest_list_value(self):
-        test_list = [8, 10, 1, 50, 20]
-        result = get_lowest_list_value(test_list)
-        self.assertEqual(result, 1)
-    
-    def test_get_highest_list_value(self):
-        test_list = [8, 10, 1, 50, 20]
-        result = get_highest_list_value(test_list)
-        self.assertEqual(result, 50)
+def get_p_distance_matrix(dna_lists):
+    num_sequences = len(dna_lists)
+    p_distance_matrix = []
 
-if __name__ == '__main__':
-    unittest.main()
+    for i in range(num_sequences):
+        row = []
+        for j in range(num_sequences):
+            distance = get_p_distance(dna_lists[i], dna_lists[j])
+            row.append(round(distance, 5))  
+        p_distance_matrix.append(row)
+
+    return p_distance_matrix
 
